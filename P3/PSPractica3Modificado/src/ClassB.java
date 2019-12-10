@@ -1,7 +1,7 @@
 public class ClassB implements Runnable {
 
 	ClassA object = new ClassA();
-
+//	boolean bool=object.get
 	public ClassB(ClassA object) {
 
 		this.object = object;
@@ -10,15 +10,14 @@ public class ClassB implements Runnable {
 
 	@Override
 	public void run() {
-		try {
-			wait();
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		object.run();
-		notifyAll();
+
+////		while boolean counter qden n, syncr
+////		wait
+//	}
+//	recibe notify}
+//entra}
+//notify
+
 	}
 
 }
-

@@ -9,22 +9,24 @@ public class MyTask implements Runnable {
 	public MyTask(Counter counter) {
 		this.counter = counter;
 	}
-			
-	
-	
+
 	@Override
 	public void run() {
-		
-		System.out.println("soy el hilo: "+ Thread.currentThread().getName() );
+
+		System.out.println("soy el hilo: " + Thread.currentThread().getName());
 		try {
 			Thread.sleep(ranNumb);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
 		
-		counter.incrementCount();
+			counter.incrementCountInteger();
 		
-	}
+//		synchronized (this) {
+//			counter.incrementCount();
 
+		//}
+
+	}
 
 }

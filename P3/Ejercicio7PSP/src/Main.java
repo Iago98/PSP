@@ -1,5 +1,5 @@
 public class Main{
-	private static final int HILOS = 1000;
+	private static final int HILOS = 200;
 
 	public static void main(String[] args) {
 
@@ -9,18 +9,19 @@ public class Main{
 		for (int i = 0; i < HILOS; ++i) {
 			threads[i]= new Thread(new MyTask(counter));
 			threads[i].start();
-		}
 
+		}
 		for (int i = 0; i < HILOS; ++i) {
 			try {
-				threads[i].join();
+			threads[i].join();
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
+		
 
-		System.out.println("cuenta= " + counter.getCount());
+		System.out.println("cuenta= " + counter.getCount());//Si no utilizamos el syncronized
 	}
 
 }

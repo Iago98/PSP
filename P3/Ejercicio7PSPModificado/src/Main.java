@@ -1,5 +1,5 @@
-public class Main{
-	private static final int HILOS = 1000;
+public class Main {
+	private static final int HILOS = 200;
 
 	public static void main(String[] args) {
 
@@ -7,8 +7,12 @@ public class Main{
 		Counter counter = new Counter();
 
 		for (int i = 0; i < HILOS; ++i) {
-			threads[i]= new Thread(new MyTask(counter));
+			threads[i] = new Thread(new MyTask(counter));
 			threads[i].start();
+
+		}
+		for (int i = 0; i < HILOS; ++i) {
+
 			try {
 				threads[i].join();
 			} catch (InterruptedException e) {
@@ -18,9 +22,8 @@ public class Main{
 
 		}
 
-		
-
-		System.out.println("cuenta= " + counter.getA());
+		//System.out.println("cuenta= " + counter.getA());
+		System.out.println("cuenta con el INT= "+counter.getCountInteger());
 	}
 
 }

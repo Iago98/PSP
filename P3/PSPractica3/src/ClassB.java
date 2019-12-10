@@ -10,8 +10,8 @@ public class ClassB implements Runnable {
 	}
 
 	@Override
-	public void run() {
-		object.run();
+	public synchronized void run() {
+		object.enterAndWait();
 	}
 
 }

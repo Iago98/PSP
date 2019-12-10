@@ -1,6 +1,6 @@
 public class Main {
 
-	private static final int HILOS = 200;
+	private static final int HILOS = 3;
 
 	public static void main(String[] args) {
 
@@ -10,12 +10,13 @@ public class Main {
 		for (int i = 0; i < HILOS; ++i) {
 			threads[i] = new Thread(new ClassB(classA));
 			threads[i].start();
+			/*
 			try {
 				threads[i].join();
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			*/
 		}
 
 	}

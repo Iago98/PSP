@@ -1,12 +1,20 @@
 import java.util.ArrayList;
-import java.util.Set;
 
 public class ClassA implements Runnable {
 
 	private static final int TIEMPO = 1000;
-	private int counter;
+	private static int counter=10;
+	public  boolean var=true;
 	private ArrayList<Long> threadIds = new ArrayList<Long>();
 	
+	public boolean isVar() {
+		return var;
+	}
+
+	public void setVar(boolean var) {
+		this.var = var;
+	}
+
 	public ClassA() {
 		this.counter=0;
 		
@@ -17,17 +25,23 @@ public class ClassA implements Runnable {
 	}
 
 	public synchronized void enterAndWait() {
-
 		
-		threadIds.add((Thread.currentThread().getId()));
+		this.var=false;
 		--counter;
+		threadIds.add((Thread.currentThread().getId()));
+		
 		System.out.println("El hilo que me está ejecutando " + Thread.currentThread().getName());
 		try {
+			
 			wait(TIEMPO);
+
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
 		System.out.println("Estoy acabando");
+		this.notifyAll();
+		this.var=true;
+		
 
 	}
 	public boolean isFinished() {
@@ -37,15 +51,17 @@ public class ClassA implements Runnable {
 		}
 		
 		return bool;
-		
 	}
 	
-	
+
 
 	@Override
 	public void run() {
 		
 		this.enterAndWait();
+		
+
+
 	}
 
 }
